@@ -4,14 +4,17 @@ using UnityEditor;
 
 namespace BurgZergArcade.ItemSystem.Editor {
 
-	public class ISQualityDatabaseEditor : EditorWindow {
+	public partial class ISQualityDatabaseEditor : EditorWindow {
 
 		ISQualityDatabase qualityDatabase;
 		ISQuality selectedItem;
 		Texture2D selectedTexture;
+		int selectedIndex = -1;
+		Vector2 _scrollPos; // scroll position for list view
 
 
-		const int SPRITE_BUTTON_SIZE = 92;
+
+		const int SPRITE_BUTTON_SIZE = 46;
 
 		const string DATABASE_FILE_NAME = @"bzaQualityDatabase.asset";
 		const string DATABASE_FOLDER_NAME = @"Database";
@@ -49,42 +52,64 @@ namespace BurgZergArcade.ItemSystem.Editor {
 	
 	
 		void OnGUI() {
-			AddQualityToDatabase();
+
+			ListView();
+			//AddQualityToDatabase();
+
+			GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
+			BottomBar();
+			GUILayout.EndHorizontal();
 		}
 
-		void AddQualityToDatabase() {
-			//Add name label to editor window 
-			selectedItem.Name = EditorGUILayout.TextField("Name:", selectedItem.Name);
 
-			//Add sprite to editor window
-			if(selectedItem.Icon) {
-				selectedTexture = selectedItem.Icon.texture;
-			} else {
-				selectedTexture = null;
-			}
 
-			if (GUILayout.Button(selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE))) {
-				int controllerID = EditorGUIUtility.GetControlID(FocusType.Passive);
-				EditorGUIUtility.ShowObjectPicker<Sprite>(null, true, null, controllerID);
-			}
+		void BottomBar() {
+			// count
+			GUILayout.Label("Qualities: " + qualityDatabase.Count);
 
-			string commandName = Event.current.commandName;
-
-			if (commandName == "ObjectSelectorUpdated") {
-				selectedItem.Icon = (Sprite)EditorGUIUtility.GetObjectPickerObject();
-				Repaint();
-			}
-
-			if (GUILayout.Button("Save")) {
-				if (selectedItem == null)
-					return;
-
-				qualityDatabase.Add(selectedItem);
-				//qualityDatabase.database.Add(selectedItem);
-
-				selectedItem = new ISQuality();
+			//addbutton
+			if (GUILayout.Button("Add")) {
+				qualityDatabase.Add(new ISQuality());
 			}
 		}
+
+
+
+//		void AddQualityToDatabase() {
+//			//Add name label to editor window 
+//			selectedItem.Name = EditorGUILayout.TextField("Name:", selectedItem.Name);
+//
+//			//Add sprite to editor window
+//			if(selectedItem.Icon) {
+//				selectedTexture = selectedItem.Icon.texture;
+//			} else {
+//				selectedTexture = null;
+//			}
+//
+//			if (GUILayout.Button(selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE))) {
+//				int controllerID = EditorGUIUtility.GetControlID(FocusType.Passive);
+//				EditorGUIUtility.ShowObjectPicker<Sprite>(null, true, null, controllerID);
+//			}
+//
+//			string commandName = Event.current.commandName;
+//
+//			if (commandName == "ObjectSelectorUpdated") {
+//				selectedItem.Icon = (Sprite)EditorGUIUtility.GetObjectPickerObject();
+//				Repaint();
+//			}
+//
+//			if (GUILayout.Button("Save")) {
+//				if (selectedItem == null)
+//					return;
+//
+//				if (selectedItem.Name == "")
+//					return;
+//
+//				qualityDatabase.Add(selectedItem);
+//
+//				selectedItem = new ISQuality();
+//			}
+//		}
 	
 	}
 

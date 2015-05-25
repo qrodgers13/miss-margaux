@@ -12,9 +12,16 @@ namespace BurgZergArcade.ItemSystem {
 
 
 		public ISQuality(){
-			_name = "Common";
+			_name = "";
 			_icon = new Sprite();
 
+		}
+
+
+
+		public ISQuality(string name, Sprite icon) {
+			_name = name;
+			_icon = icon;
 		}
 
 
