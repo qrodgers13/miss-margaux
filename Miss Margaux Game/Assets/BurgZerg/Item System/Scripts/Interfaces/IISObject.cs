@@ -9,17 +9,16 @@ namespace BurgZergArcade.ItemSystem {
 		//icon or sprite
 		//burden
 		//quality
-		string ISName { get; set; }
-		int ISValue { get; set; }
-		Sprite ISIcon { get; set; }
-		int  ISBurden { get; set; }
-		ISQuality ISQuality { get; set; }
+		string Name { get; set; }
+		int Value { get; set; }
+		Sprite Icon { get; set; }
+		int  Burden { get; set; }
+		ISQuality Quality { get; set; }
 
 		//These go to other item interfaces 
 		//equip (true or false)
 		//questItem flag
-		//durability 
-		//takeDamage 
+
 		//prefab
 
 	}

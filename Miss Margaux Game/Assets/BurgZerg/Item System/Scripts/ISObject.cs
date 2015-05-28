@@ -13,7 +13,7 @@ namespace BurgZergArcade.ItemSystem {
 
 
 
-		public string ISName {
+		public string Name {
 			get {
 				return _name;
 			}
@@ -25,7 +25,7 @@ namespace BurgZergArcade.ItemSystem {
 
 
 
-		public int ISValue {
+		public int Value {
 			get {
 				return _value;
 			}
@@ -37,7 +37,7 @@ namespace BurgZergArcade.ItemSystem {
 
 
 
-		public Sprite ISIcon {
+		public Sprite Icon {
 			get {
 				return _icon;
 			}
@@ -49,7 +49,7 @@ namespace BurgZergArcade.ItemSystem {
 
 		
 
-		public int ISBurden {
+		public int Burden {
 			get {
 				return _burden;
 			}
@@ -61,7 +61,7 @@ namespace BurgZergArcade.ItemSystem {
 
 
 
-		public ISQuality ISQuality {
+		public ISQuality Quality {
 			get {
 				return _quality;
 			}

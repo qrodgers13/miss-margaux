@@ -7,7 +7,7 @@ namespace BurgZergArcade.ItemSystem.Editor {
 	public partial class ISQualityDatabaseEditor : EditorWindow {
 
 		ISQualityDatabase qualityDatabase;
-		ISQuality selectedItem;
+		//ISQuality selectedItem;
 		Texture2D selectedTexture;
 		int selectedIndex = -1;
 		Vector2 _scrollPos; // scroll position for list view
@@ -17,12 +17,12 @@ namespace BurgZergArcade.ItemSystem.Editor {
 		const int SPRITE_BUTTON_SIZE = 46;
 
 		const string DATABASE_FILE_NAME = @"bzaQualityDatabase.asset";
-		const string DATABASE_FOLDER_NAME = @"Database";
-		const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_FOLDER_NAME + "/" + DATABASE_FILE_NAME;
+		const string DATABASE_PATH_NAME = @"Database";
+		const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH_NAME + "/" + DATABASE_FILE_NAME;
 
 
 
-		[MenuItem("BZA/Database/Quality Editor %#i")]
+		[MenuItem("BZA/Database/Quality Editor %#w")]
 		public static void Init() {
 			ISQualityDatabaseEditor window = EditorWindow.GetWindow<ISQualityDatabaseEditor>();
 			window.minSize = new Vector2(400, 300);
@@ -34,27 +34,34 @@ namespace BurgZergArcade.ItemSystem.Editor {
 
 		void OnEnable() {
 
-			qualityDatabase = AssetDatabase.LoadAssetAtPath( DATABASE_FULL_PATH, typeof(ISQualityDatabase)) as ISQualityDatabase;
+			qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
+			qualityDatabase = qualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH_NAME, DATABASE_FILE_NAME);
 
-			if (qualityDatabase == null) {
+//			qualityDatabase = AssetDatabase.LoadAssetAtPath( DATABASE_FULL_PATH, typeof(ISQualityDatabase)) as ISQualityDatabase;
+//
+//			if (qualityDatabase == null) {
+//
+//				if (!AssetDatabase.IsValidFolder("Assets/" + DATABASE_FOLDER_NAME))
+//					AssetDatabase.CreateFolder("Assets", DATABASE_FOLDER_NAME);
+//
+//				qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
+//				AssetDatabase.CreateAsset(qualityDatabase, DATABASE_FULL_PATH);
+//				AssetDatabase.SaveAssets();
+//				AssetDatabase.Refresh();
+//			}
 
-				if (!AssetDatabase.IsValidFolder("Assets/" + DATABASE_FOLDER_NAME))
-					AssetDatabase.CreateFolder("Assets", DATABASE_FOLDER_NAME);
-
-				qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
-				AssetDatabase.CreateAsset(qualityDatabase, DATABASE_FULL_PATH);
-				AssetDatabase.SaveAssets();
-				AssetDatabase.Refresh();
-			}
-
-			selectedItem = new ISQuality();
+			//selectedItem = new ISQuality();
 		}
 	
 	
 		void OnGUI() {
 
+//			if (qualityDatabase == null) {
+//				Debug.LogWarning("qualityDatabase not loaded");
+//				return;
+//			}
+
 			ListView();
-			//AddQualityToDatabase();
 
 			GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
 			BottomBar();
