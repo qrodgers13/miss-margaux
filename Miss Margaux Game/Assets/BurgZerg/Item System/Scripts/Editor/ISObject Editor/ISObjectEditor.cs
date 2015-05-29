@@ -6,6 +6,14 @@ using UnityEditor;
 namespace BurgZergArcade.ItemSystem {
 
 	public partial class ISObjectEditor : EditorWindow {
+	
+		ISWeaponDatabase database;
+	
+		const string DATABASE_FILE_NAME = @"bzaWeaponDatabase.asset";
+		const string DATABASE_PATH_NAME = @"Database";
+		const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH_NAME + "/" + DATABASE_FILE_NAME;
+		
+
 
 		[MenuItem("BZA/Database/Item System Editor %#i")]
 		public static void Init() {
@@ -17,6 +25,9 @@ namespace BurgZergArcade.ItemSystem {
 
 		void OnEnable() {
 
+			if (database == null) {
+				database = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH_NAME, DATABASE_FILE_NAME);
+			} 
 
 		}
 

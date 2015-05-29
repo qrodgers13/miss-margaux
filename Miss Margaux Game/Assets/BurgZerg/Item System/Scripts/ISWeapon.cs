@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEditor;
 
 namespace BurgZergArcade.ItemSystem {
 	
@@ -15,7 +15,6 @@ namespace BurgZergArcade.ItemSystem {
 
 		public ISWeapon() {
 			_equipmentSlot = new ISEquipmentSlot();
-			_prefab = new GameObject(); 
 		}
 
 		public ISWeapon(int durability, int maxDurability, ISEquipmentSlot equipmentSlot, GameObject prefab) {
@@ -82,6 +81,10 @@ namespace BurgZergArcade.ItemSystem {
 
 		public GameObject Prefab {
 			get { return _prefab; }
+		}
+
+		public void OnGUI() {
+			Name = EditorGUILayout.TextField("Name: ", Name);
 		}
 	}
 

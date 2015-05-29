@@ -6,12 +6,58 @@ namespace BurgZergArcade.ItemSystem {
 	public partial class ISObjectEditor {
 	
 	
-		void ItemDetails() {
-			GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+		ISWeapon tempWeapon = new ISWeapon();
+		bool showNewWeaponDetails = false;
 
-			GUILayout.Label("Detail View");
+		void ItemDetails() {
+			GUILayout.BeginVertical("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+
+			if (showNewWeaponDetails) {
+				DisplayNewWeapon();
+			}
 
 			GUILayout.EndHorizontal();
+
+			GUILayout.Space(50);
+			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
+			DisplayButtons();
+			GUILayout.EndHorizontal();
+			GUILayout.EndVertical();
+		
+		}
+
+		void DisplayNewWeapon() {
+
+			tempWeapon.OnGUI();		
+	
+		}
+
+		void DisplayButtons() {
+
+			if (!showNewWeaponDetails) {
+
+				if (GUILayout.Button("Create New Weapon")) {
+					
+					tempWeapon = new ISWeapon();
+					showNewWeaponDetails = true; 
+				} 
+
+			} else {
+				
+				if (GUILayout.Button("Save Weapon")) {
+
+					showNewWeaponDetails = false;
+					tempWeapon = null;
+					
+				}
+				
+				if (GUILayout.Button("Cancel")) {
+
+					showNewWeaponDetails = false;
+					tempWeapon = null;
+				}
+			}
 		}
 	}
 
