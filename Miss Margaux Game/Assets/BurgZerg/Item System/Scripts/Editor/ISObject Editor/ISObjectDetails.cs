@@ -11,13 +11,13 @@ namespace BurgZergArcade.ItemSystem {
 
 		void ItemDetails() {
 			GUILayout.BeginVertical("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+			GUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
 			if (showNewWeaponDetails) {
 				DisplayNewWeapon();
 			}
 
-			GUILayout.EndHorizontal();
+			GUILayout.EndVertical();
 
 			GUILayout.Space(50);
 			GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));

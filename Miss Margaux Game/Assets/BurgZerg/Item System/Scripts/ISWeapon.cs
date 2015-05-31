@@ -83,8 +83,30 @@ namespace BurgZergArcade.ItemSystem {
 			get { return _prefab; }
 		}
 
-		public void OnGUI() {
-			Name = EditorGUILayout.TextField("Name: ", Name);
+
+		/// <summary>
+		///  This code will go in a new script later on...
+		/// </summary>
+
+		public override void OnGUI() {
+			base.OnGUI(); 
+
+			_minDamage = System.Convert.ToInt32(EditorGUILayout.TextField("Damage: ", _minDamage.ToString()));
+			_durability = System.Convert.ToInt32(EditorGUILayout.TextField("Durability: ", _durability.ToString()));
+			_maxDurability = System.Convert.ToInt32(EditorGUILayout.TextField("Max Durability: ", _maxDurability.ToString()));
+
+			DisplayEquipmentSlot();
+			DisplayPrefab();
+		}
+
+		public void DisplayEquipmentSlot() {
+			GUILayout.Label("Equipment Slot: ");
+		}
+
+		public void DisplayPrefab() {
+			GUILayout.Label("Prefab: ");
+
+
 		}
 	}
 
