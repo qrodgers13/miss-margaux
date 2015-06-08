@@ -97,10 +97,6 @@ namespace BurgZergArcade.ItemSystem {
 			GUILayout.Label("Icon: ");
 		}
 
-		public int SelectedQualityID {
-			get { return qualitySelectedIndex; }
-		}
-
 		public ISObject() {
 
 			string DATABASE_FILE_NAME = @"bzaQualityDatabase.asset";
@@ -117,7 +113,6 @@ namespace BurgZergArcade.ItemSystem {
 
 		public void DisplayQuality() {
 			qualitySelectedIndex = EditorGUILayout.Popup("Quality", qualitySelectedIndex, options);
-			_quality = qdb.Get(SelectedQualityID);
 		}
 	}
 }
