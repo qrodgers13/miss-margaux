@@ -11,4 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b44fa54f73834ec28029e2ccf062e51, type: 3}
   m_Name: bzaWeaponDatabase
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - _name: Test
+    _icon: {fileID: 0}
+    _value: 11
+    _burden: 1111
+    _quality:
+      _name: Common
+      _icon: {fileID: 0}
+    _minDamage: 2
+    _durability: 22
+    _maxDurability: 222
+    _prefab: {fileID: 122828, guid: 3eb255bccca0b4062bbfb90634f7d7f1, type: 2}
