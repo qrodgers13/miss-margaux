@@ -5,13 +5,15 @@ using UnityEditor;
 namespace BurgZergArcade.ItemSystem {
 	
 	[System.Serializable]
-	public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISEquipable, IISGameObject  {
+	public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISGameObject  {
 
 		[SerializeField] int _minDamage; 
 		[SerializeField] int _durability;
 		[SerializeField] int _maxDurability;
 		[SerializeField] ISEquipmentSlot _equipmentSlot; 
 		[SerializeField] GameObject _prefab;
+
+		public EquipmentSlot equipmentSlot;
 
 		public ISWeapon() {
 			_equipmentSlot = new ISEquipmentSlot();
@@ -74,9 +76,9 @@ namespace BurgZergArcade.ItemSystem {
 		}
 
 
-		public bool Equip(){
-			throw new System.NotImplementedException();
-		}
+//		public bool Equip(){
+//			throw new System.NotImplementedException();
+//		}
 
 
 		public GameObject Prefab {
@@ -100,7 +102,7 @@ namespace BurgZergArcade.ItemSystem {
 		}
 
 		public void DisplayEquipmentSlot() {
-			GUILayout.Label("Equipment Slot: ");
+			equipmentSlot = (EquipmentSlot)EditorGUILayout.EnumPopup("Equipment Slot", equipmentSlot);
 		}
 
 		public void DisplayPrefab() {

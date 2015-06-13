@@ -23,3 +23,16 @@ MonoBehaviour:
     _durability: 22
     _maxDurability: 222
     _prefab: {fileID: 122828, guid: 3eb255bccca0b4062bbfb90634f7d7f1, type: 2}
+    equipmentSlot: 0
+  - _name: tres
+    _icon: {fileID: 0}
+    _value: 0
+    _burden: 12
+    _quality:
+      _name: Common
+      _icon: {fileID: 0}
+    _minDamage: 123
+    _durability: 0
+    _maxDurability: 0
+    _prefab: {fileID: 0}
+    equipmentSlot: 1
